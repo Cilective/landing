@@ -2,6 +2,7 @@
     --primary: #7b61ff;
     --bg-main: #181820;
     --bg-dark: #111016;
+    --bg-sdark: #070707;
     --text-main: #e0e0e0;
     --text-light: #aaa;
     --card-bg: #22202a;
@@ -14,7 +15,7 @@ html {
 }
 body {
     margin: 0;
-    background: var(--bg-dark);
+    background: var(--bg-sdark);
     color: var(--text-main);
     font-family: system-ui, sans-serif;
     line-height: 1.7;
@@ -22,7 +23,7 @@ body {
 /* Hero Section */
 .hero-section {
     position: relative;
-    background: url('images/network-graph.png') center center / cover no-repeat;
+    background: var(--bg-sdark);
     min-height: 68vh;
     width: 100vw;
     display: flex;
@@ -59,7 +60,7 @@ body {
     color: var(--primary);
 }
 .hero-content p {
-    color: #e0e0e0;
+    color: var(--text-main);
     font-size: 1.2em;
     max-width: 520px;
     margin: 14px auto 0;
@@ -181,7 +182,7 @@ section h2 {
 }
 /* Signup section */
 .signup-section {
-    background: #232236;
+    background: var(--bg-dark);
     padding: 68px 0;
 }
 .signup-form {
@@ -209,7 +210,7 @@ section h2 {
     width: 90%;
     padding: 12px 13px;
     border-radius: 0.4em;
-    background: #181820;
+    background: var(--bg-main);
     border: 1px solid #312950;
     color: #fff;
     font-size: 1em;
@@ -273,7 +274,7 @@ section h2 {
 
 /* Footer */
 footer {
-    background: var(--bg-dark);
+    background: var(--bg-sdark);
     color: #8a8999;
     text-align: center;
     padding: 30px 0 20px 0;
