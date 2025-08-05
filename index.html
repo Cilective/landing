@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cilective – Optimize your CI pipeline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Hero section -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>
+      Run <span class="primary">Only</span> the Tests You <span class="primary">Need</span>
+    </h1>
+    <p>
+      Save time and reduce CI costs by running only the tests affected by your changes.
+    </p>
+    <a href="#signup" class="cta-btn">Sign Up for Early Access</a>
+    <div class="brand-identity">
+      <img class="brand-wordmark" src="images/lw-white.svg" alt="Cilective" aria-label="Cilective wordmark" />
+    </div>
+  </div>
+</section>
+
+<!-- Benefits section -->
+<section class="benefits-section">
+  <h2>Why <span class="primary">Cilective</span>?</h2>
+  <div class="benefits-list">
+    <!-- Benefit 1 -->
+    <div class="benefit-card">
+      <div class="svg-placeholder"></div>
+      <div class="benefit-text">
+        <h4>Faster Feedback Cycles</h4>
+        <p>
+          Running only the tests impacted by your change reduces developer
+          wait times and boosts deployment velocity. No more sitting
+          idle while unrelated tests run—Cilective keeps feedback
+          fast and continuous.
+        </p>
+      </div>
+    </div>
+    <!-- Benefit 2 -->
+    <div class="benefit-card">
+      <div class="svg-placeholder"></div>
+      <div class="benefit-text">
+        <h4>Cut Infrastructure Costs</h4>
+        <p>
+          By eliminating unnecessary test execution, you dramatically
+          reduce compute usage and CI spend. Enjoy shorter build cycles
+          and lower cloud bills without sacrificing test coverage.
+        </p>
+      </div>
+    </div>
+    <!-- Benefit 3 -->
+    <div class="benefit-card">
+      <div class="svg-placeholder"></div>
+      <div class="benefit-text">
+        <h4>Minimize Flaky Test Failures</h4>
+        <p>
+          Limiting the number of tests run per commit helps avoid
+          unrelated flaky tests from breaking your build. Cilective
+          focuses on relevant tests, reducing noise and stress for your
+          team.
+        </p>
+      </div>
+    </div>
+    <!-- Benefit 4 -->
+    <div class="benefit-card">
+      <div class="svg-placeholder"></div>
+      <div class="benefit-text">
+        <h4>Boost Developer Productivity</h4>
+        <p>
+          Fast feedback cycles and shorter build times free developers to
+          focus on high‑impact work. With Cilective, engineers spend
+          less time waiting for CI and more time shipping value.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how-section">
+  <h2>How It Works</h2>
+  <div class="how-cards">
+    <!-- Feature 1 -->
+    <div class="how-card">
+      <div class="svg-placeholder"></div>
+      <h3>Selective Test Execution</h3>
+      <p>
+        Our dependency analysis identifies which tests relate to your code
+        changes and runs only what’s necessary. This drastically reduces
+        build times and CI costs, letting your team focus on shipping
+        features.
+      </p>
+    </div>
+    <!-- Feature 2 -->
+    <div class="how-card">
+      <div class="svg-placeholder"></div>
+      <h3>Seamless Integration</h3>
+      <p>
+        Cilective plugs into your existing development workflow. It works
+        with popular code hosts and CI/CD providers—GitHub, GitLab,
+        Bitbucket, Jenkins, CircleCI and more—so you can start saving time
+        without changing your tools.
+      </p>
+    </div>
+    <!-- Feature 3 -->
+    <div class="how-card">
+      <div class="svg-placeholder"></div>
+      <h3>Supports Multiple Languages</h3>
+      <p>
+        No matter which stack you use—Python, Java, JavaScript and more—
+        Cilective’s flexible test selection works across languages and
+        frameworks, enabling adoption across diverse teams.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Signup section -->
+<section id="signup" class="signup-section">
+  <h2>Get Early Access</h2>
+  <p style="max-width: 420px; margin: 0 auto 32px auto; color: #bab8c9; text-align:center;">
+    Join our free early access program and be the first to experience
+    selective test execution. We’ll keep you updated as we expand
+    language support and integrations.
+  </p>
+  <form id="signupForm" class="signup-form">
+    <div class="signup-form-fields">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" required />
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="form-field">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Company" />
+      </div>
+      <div class="form-field">
+        <label for="role">Role</label>
+        <input type="text" id="role" name="role" placeholder="Role" />
+      </div>
+      <div class="form-field" style="flex: 2 1 100%;">
+        <label for="languages">Languages / Frameworks Used</label>
+        <input type="text" id="languages" name="languages" placeholder="Languages / Frameworks Used" />
+      </div>
+    </div>
+    <div class="submit-row">
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", async function(e){
+      e.preventDefault();
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        company: document.getElementById("company").value,
+        role: document.getElementById("role").value,
+        languages: document.getElementById("languages").value
+      };
+      await fetch("", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      });
+      alert("Thanks for signing up!");
+    });
+  </script>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>
+    &copy; 2025 Cilective. All rights reserved. Built with ♥ to help
+    developers ship faster.
+  </p>
+</footer>
+</body>
+</html>
