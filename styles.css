@@ -1,0 +1,306 @@
+:root {
+    --primary: #7b61ff;
+    --bg-main: #181820;
+    --bg-dark: #111016;
+    --text-main: #e0e0e0;
+    --text-light: #aaa;
+    --card-bg: #22202a;
+    --border: #373145;
+    --radius: 0.6em;
+    --max-width: 1100px;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: system-ui, sans-serif;
+    line-height: 1.7;
+}
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background: url('images/network-graph.png') center center / cover no-repeat;
+    min-height: 68vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.73);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 96px 16px 64px 16px;
+    text-align: center;
+}
+.brand-wordmark {
+    height: 48px;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+.hero-content h1 {
+    color: #fff;
+    font-size: 2.3em;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+}
+.primary {
+    color: var(--primary);
+}
+.hero-content p {
+    color: #e0e0e0;
+    font-size: 1.2em;
+    max-width: 520px;
+    margin: 14px auto 0;
+}
+.cta-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.12em;
+    padding: 13px 36px;
+    border-radius: var(--radius);
+    margin-top: 32px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.16s;
+    box-shadow: 0 2px 18px 0 #321d5040;
+}
+.cta-btn:hover {
+    background: #5c3ebb;
+}
+/* Section headings */
+section h2 {
+    font-size: 2.1em;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 28px;
+    font-weight: 800;
+    text-align: center;
+}
+/* How it works section */
+.how-section {
+    background: #232236;
+    padding: 60px 0;
+}
+.how-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 36px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+.how-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 18px #18162c22;
+    padding: 38px 28px 28px 28px;
+    width: 325px;
+    text-align: center;
+    border: 1px solid var(--border);
+    flex: 1 1 280px;
+    min-width: 250px;
+    max-width: 350px;
+}
+.how-card svg {
+    width: 50px;
+    height: 50px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    margin-top: 4px;
+}
+.how-card h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.18em;
+    font-weight: 700;
+}
+.how-card p {
+    color: var(--text-light);
+    margin-top: 13px;
+    margin-bottom: 0;
+    font-size: 1em;
+}
+/* Benefits section */
+.benefits-section {
+    background: var(--bg-dark);
+    padding: 68px 0;
+}
+.benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    justify-content: center;
+}
+.benefit-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 12px #18162c22;
+    border: 1px solid var(--border);
+    padding: 28px 22px 24px 22px;
+    display: flex;
+    flex: 1 1 320px;
+    min-width: 260px;
+    max-width: 480px;
+    align-items: flex-start;
+    gap: 18px;
+}
+.benefit-card svg {
+    width: 36px;
+    height: 36px;
+    color: var(--primary);
+    margin-right: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+.benefit-text h4 {
+    margin: 0 0 6px 0;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+.benefit-text p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.99em;
+}
+/* Signup section */
+.signup-section {
+    background: #232236;
+    padding: 68px 0;
+}
+.signup-form {
+    max-width: 540px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 14px #18162c22;
+    padding: 40px 24px 32px 24px;
+    border: 1px solid var(--border);
+}
+.signup-form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+.signup-form-fields .form-field {
+    flex: 1 1 200px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.signup-form input {
+    width: 90%;
+    padding: 12px 13px;
+    border-radius: 0.4em;
+    background: #181820;
+    border: 1px solid #312950;
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.16s, box-shadow 0.16s;
+}
+.signup-form input:focus {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 2px #7b61ff22;
+}
+.signup-form label {
+    font-size: 0.98em;
+    color: #bcbada;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+.signup-form .submit-row {
+    text-align: center;
+    margin-top: 24px;
+}
+.signup-form button {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 13px 36px;
+    border: none;
+    border-radius: var(--radius);
+    transition: background 0.16s;
+    box-shadow: 0 2px 16px 0 #321d5040;
+    cursor: pointer;
+}
+.signup-form button:hover {
+    background: #5c3ebb;
+}
+
+.svg-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #2b2836;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px dashed #57516d;
+}
+
+.benefit-card .svg-placeholder {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.how-card .svg-placeholder {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 18px auto; /* Center and add spacing below */
+}
+
+/* Footer */
+footer {
+    background: var(--bg-dark);
+    color: #8a8999;
+    text-align: center;
+    padding: 30px 0 20px 0;
+    font-size: 1em;
+    margin-top: 0;
+}
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .how-cards, .benefits-list {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+    }
+    .benefit-card, .how-card {
+        width: 100%;
+        min-width: 0;
+        max-width: 500px;
+    }
+}
+@media (max-width: 600px) {
+    .hero-content {
+        padding: 56px 7px 38px 7px;
+    }
+    .hero-section {
+        min-height: 52vh;
+    }
+    .how-card, .benefit-card {
+        padding: 20px 6px 16px 6px;
+    }
+}
