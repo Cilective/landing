@@ -9,7 +9,16 @@
 <body>
 <!-- Hero section -->
 <section class="hero-section">
-  <div class="hero-overlay"></div>
+  <div class="hero-background">
+    <div id="stars" class="layer"></div>
+    <canvas id="links1" class="links"></canvas>
+
+    <div id="stars2" class="layer"></div>
+    <canvas id="links2" class="links"></canvas>
+
+    <div id="stars3" class="layer"></div>
+    <canvas id="links3" class="links"></canvas>
+  </div>
   <div class="hero-content">
     <h1>
       Ship <span class="primary">Faster</span> with Selective Test Runs
@@ -166,5 +175,123 @@
     developers ship faster.
   </p>
 </footer>
+
+<script>
+  (() => {
+    // ===== Config =====
+    const SIZE = 2000; // must match CSS translate range and :after top
+    const LAYERS = [
+      { id: 'stars',  canvas: 'links1', count: 700,  maxDist: 55,  lineWidth: 0.5, duration: 50 },
+      { id: 'stars2', canvas: 'links2', count: 200,  maxDist: 70,  lineWidth: 0.6, duration: 100 },
+      { id: 'stars3', canvas: 'links3', count: 100,  maxDist: 90,  lineWidth: 0.8, duration: 150 },
+    ];
+
+    // ===== Utilities =====
+    const rnd = (n) => Math.floor(Math.random() * n);
+
+    function makePoints(n) {
+      const pts = new Array(n);
+      for (let i = 0; i < n; i++) pts[i] = { x: rnd(SIZE), y: rnd(SIZE) };
+      return pts;
+    }
+
+    function pointsToBoxShadow(points) {
+      // "xpx ypx #FFF, ..."
+      return points.map(p => `${p.x}px ${p.y}px #FFF`).join(',\n');
+    }
+
+    function drawConnections(canvas, points, { maxDist, lineWidth }) {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width  = SIZE * dpr;
+      canvas.height = SIZE * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = '#FFFFFF';
+
+      // Spatial hash grid to avoid O(n^2)
+      const cell = maxDist;
+      const cols = Math.ceil(SIZE / cell);
+      const grid = new Map();
+      const key = (cx, cy) => (cx << 16) | cy;
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const cx = (p.x / cell) | 0;
+        const cy = (p.y / cell) | 0;
+        const k = key(cx, cy);
+        let arr = grid.get(k);
+        if (!arr) grid.set(k, (arr = []));
+        arr.push({ i, p });
+      }
+
+      function neighbors(cx, cy) {
+        const out = [];
+        for (let y = cy - 1; y <= cy + 1; y++) {
+          for (let x = cx - 1; x <= cx + 1; x++) {
+            const arr = grid.get(key(x, y));
+            if (arr) out.push(...arr);
+          }
+        }
+        return out;
+      }
+
+      ctx.beginPath();
+      const max2 = maxDist * maxDist;
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const cx = (p.x / cell) | 0;
+        const cy = (p.y / cell) | 0;
+        const nbs = neighbors(cx, cy);
+
+        for (const nb of nbs) {
+          if (nb.i <= i) continue; // avoid duplicates
+          const q = nb.p;
+          const dx = p.x - q.x, dy = p.y - q.y;
+          const d2 = dx*dx + dy*dy;
+          if (d2 <= max2) {
+            const d = Math.sqrt(d2);
+            const a = Math.max(0.08, 1 - d / maxDist); // soft fade by distance
+            ctx.globalAlpha = a;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+          }
+        }
+      }
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    // ===== Init =====
+    function initLayer({ id, canvas, count, maxDist, lineWidth }) {
+      // Generate star positions
+      const pts = makePoints(count);
+
+      // Set CSS custom properties so both the element and its ::after can use them
+      const root = document.documentElement;
+      if (id === 'stars')  root.style.setProperty('--shadows-small',  pointsToBoxShadow(pts));
+      if (id === 'stars2') root.style.setProperty('--shadows-medium', pointsToBoxShadow(pts));
+      if (id === 'stars3') root.style.setProperty('--shadows-big',    pointsToBoxShadow(pts));
+
+      // Build combined list including the ::after stars (offset by +SIZE in Y)
+      const ptsAfter = pts.map(p => ({ x: p.x, y: p.y + SIZE }));
+      const combined = pts.concat(ptsAfter);
+
+      // Draw the connection lines once (the canvas bitmap is animated via CSS)
+      const cv = document.getElementById(canvas);
+      drawConnections(cv, combined, { maxDist, lineWidth });
+    }
+
+    function init() {
+      // Ensure CSS animation distance matches SIZE
+      document.documentElement.style.setProperty('--field-size', SIZE + 'px');
+      LAYERS.forEach(initLayer);
+    }
+
+    window.addEventListener('load', init);
+  })();
+</script>
 </body>
 </html>

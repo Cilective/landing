@@ -32,12 +32,14 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
-.hero-overlay {
+.hero-background {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.73);
+    background: radial-gradient(ellipse at bottom, #221f3a 0%, #090A0F 100%);
     z-index: 1;
+    pointer-events: none;
 }
 .hero-content {
     position: relative;
@@ -307,3 +309,81 @@ footer {
         padding: 20px 6px 16px 6px;
     }
 }
+
+:root {
+    --field-size: 2000px;
+}
+
+/* ===== Animation ===== */
+@keyframes animStar {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-2000px); } /* keep in sync with --field-size */
+}
+
+/* ===== Star layers ===== */
+.layer {
+    position: absolute;
+    top: 0; left: 0;
+    background: transparent;
+    /* Stars are injected via CSS custom properties */
+}
+
+/* Layer 1: small stars */
+#stars {
+    width: 1px; height: 1px;
+    box-shadow: var(--shadows-small, none);
+    animation: animStar 50s linear infinite;
+}
+#stars::after {
+    content: "";
+    position: absolute; top: 2000px; left: 0;
+    width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: var(--shadows-small, none);
+}
+
+/* Layer 2: medium stars */
+#stars2 {
+    width: 2px; height: 2px;
+    box-shadow: var(--shadows-medium, none);
+    animation: animStar 100s linear infinite;
+}
+#stars2::after {
+    content: "";
+    position: absolute; top: 2000px; left: 0;
+    width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: var(--shadows-medium, none);
+}
+
+/* Layer 3: big stars */
+#stars3 {
+    width: 3px; height: 3px;
+    box-shadow: var(--shadows-big, none);
+    animation: animStar 150s linear infinite;
+}
+#stars3::after {
+    content: "";
+    position: absolute; top: 2000px; left: 0;
+    width: 3px; height: 3px;
+    background: transparent;
+    box-shadow: var(--shadows-big, none);
+}
+
+/* ===== Connection canvases ===== */
+.links {
+    position: absolute;
+    top: 0; left: 0;
+    width: 2000px; height: 2000px; /* CSS pixels; JS sets the backing store (DPR) */
+    pointer-events: none;
+}
+
+/* Stacking and synchronized animations */
+#links1 { z-index: 0; animation: animStar 50s linear infinite; }
+#stars  { z-index: 1; }
+
+#links2 { z-index: 2; animation: animStar 100s linear infinite; }
+#stars2 { z-index: 3; }
+
+#links3 { z-index: 4; animation: animStar 150s linear infinite; }
+#stars3 { z-index: 5; }
