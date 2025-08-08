@@ -17,7 +17,7 @@
     <canvas id="links2" class="links"></canvas>
 
     <div id="stars3" class="layer"></div>
-    <canvas id="links3" class="links"></canvas>
+<!--    <canvas id="links3" class="links"></canvas>-->
   </div>
   <div class="hero-content">
     <h1>
@@ -156,7 +156,6 @@
         email: document.getElementById("email").value,
         company: document.getElementById("company").value,
         role: document.getElementById("role").value,
-        languages: document.getElementById("languages").value
       };
       await fetch("", {
         method: "POST",
@@ -281,7 +280,8 @@
 
       // Draw the connection lines once (the canvas bitmap is animated via CSS)
       const cv = document.getElementById(canvas);
-      drawConnections(cv, combined, { maxDist, lineWidth });
+      if (cv)
+        drawConnections(cv, combined, { maxDist, lineWidth });
     }
 
     function init() {
