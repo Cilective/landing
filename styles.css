@@ -161,14 +161,13 @@ section h2 {
     padding: 28px 22px 24px 22px;
     display: flex;
     flex: 1 1 320px;
-    min-width: 260px;
+    min-width: 100px;
     max-width: 480px;
     align-items: flex-start;
     gap: 18px;
 }
 .benefit-card svg {
     width: 40px;
-    height: 40px;
     color: var(--primary);
     margin-right: 10px;
     flex-shrink: 0;
@@ -252,37 +251,12 @@ section h2 {
     background: #5c3ebb;
 }
 
-.svg-placeholder {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: #2b2836;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: 2px dashed #57516d;
-}
-
 .card-icon {
     width: 40px;
     height: 40px;
     display: grid;
     place-items: center;
     margin: 0 auto 14px;
-}
-
-.benefit-card .svg-placeholder {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-    margin-top: 4px;
-}
-
-.how-card .svg-placeholder {
-    width: 36px;
-    height: 36px;
-    margin: 0 auto 18px auto; /* Center and add spacing below */
 }
 
 /* Footer */
@@ -305,6 +279,7 @@ footer {
         width: 100%;
         min-width: 0;
         max-width: 500px;
+        flex: 1 1;
     }
 }
 @media (max-width: 600px) {
