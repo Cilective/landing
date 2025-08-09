@@ -1,3 +1,8 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 :root {
     --primary: #7b61ff;
     --bg-main: #181820;
@@ -290,7 +295,7 @@ footer {
         min-height: 52vh;
     }
     .how-card, .benefit-card {
-        padding: 20px 6px 16px 6px;
+        padding: 20px 10px 16px 10px;
     }
 }
 
