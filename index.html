@@ -157,12 +157,34 @@
         company: document.getElementById("company").value,
         role: document.getElementById("role").value,
       };
-      await fetch("", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      });
-      alert("Thanks for signing up!");
+
+      try {
+        const res = await fetch("https://aeflwvtprpxdzllxgfng.supabase.co/functions/v1/landing-page-signup-form", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "sb_publishable_EvlF0RQbsDjo9XcHfkMLLA_3ej-DPfc"
+          }
+        });
+
+        if (res.ok) {
+          alert("Thanks for signing up!");
+          e.target.reset();
+        } else {
+          const status = res.status;
+          const raw = await res.text();
+          let msg = raw;
+          try {
+            const j = JSON.parse(raw);
+            msg = j.error || j.message || raw;
+          } catch {}
+          console.error("Signup failed", { status, raw });
+          alert(`Error (${status}): ${msg}`);
+        }
+      } catch (err) {
+        alert("Could not submit form: " + err.message);
+      }
     });
   </script>
 </section>
