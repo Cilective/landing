@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <g style="">
+        <path style="fill: none; stroke-width: 21px; stroke: rgb(14, 59, 104);" d="M 313.032 151.496 C 231.928 92.541 138.248 151.464 137.227 238.247 C 136.329 314.591 219.362 388.39 313.687 330.309"/>
+        <circle cx="250.605" cy="205.565" r="14.803" style="fill: rgb(14, 59, 104);"/>
+        <circle cx="196.307" cy="193.601" r="14.803" style="stroke-width: 1px; fill: rgb(14, 59, 104);"/>
+        <circle cx="190.355" cy="269.398" r="14.803" style="stroke-width: 1px; fill: rgb(14, 59, 104);"/>
+        <circle cx="273.914" cy="302.484" r="14.803" style="stroke-width: 1px; fill: rgb(14, 59, 104);"/>
+        <circle cx="313.196" cy="331.433" r="19.959" style="stroke-width: 1px; fill: rgb(14, 59, 104);"/>
+        <line style="stroke-width: 9px; stroke: rgb(14, 59, 104);" x1="274.217" y1="302.16" x2="315.255" y2="332.237"/>
+        <line style="stroke-width: 9px; stroke: rgb(14, 59, 104);" x1="191.006" y1="268.751" x2="274.101" y2="302.147"/>
+        <line style="stroke-width: 9px; transform-origin: 192.334px 232.474px 0px; stroke: rgb(14, 59, 104);" x1="189.295" y1="272.171" x2="195.372" y2="192.771" transform="matrix(-1, 0, 0, -1, 0, 0)"/>
+        <line style="stroke-width: 9px; stroke: rgb(14, 59, 104);" x1="195.173" y1="191.736" x2="251.332" y2="207.043"/>
+        <line style="stroke-width: 9px; stroke: rgb(14, 59, 104); transform-origin: 280.032px 178.399px 0px;" x1="247.454" y1="209.528" x2="312.61" y2="147.276" transform="matrix(-1, 0, 0, -1, 0, 0)"/>
+        <circle cx="312.736" cy="149.037" r="21.843" style="fill: rgb(2, 173, 184);"/>
+    </g>
+</svg>
